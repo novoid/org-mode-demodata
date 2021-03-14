@@ -1,0 +1,216 @@
+# -*- mode: org; coding: utf-8; -*-
+# Time-stamp: <2021-03-14 19:34:29 vk>
+# 2021-03-14=referenceday → see https://github.com/novoid/isodateshifter for a tool to shift all time-stamps to your demo day
+#+TODO: TODO(t) NEXT(n) STARTED(s) WAITING(w@/!) SOMEDAY(S) | DONE(d!/!) CANCELED(c@/!)
+#+SETUPFILE: demo-tags.org
+#+AUTHOR: Karl Voit
+#+OPTIONS: toc:nil author:nil timestamp:nil date:nil tags:nil
+#+STARTUP: indent
+
+This is a [[https://orgmode.org][Org mode]] file for demo purposes by [[https://Karl-Voit.at][Karl Voit]] licensed under [[http://creativecommons.org/licenses/by-sa/4.0/][Attribution-ShareAlike 4.0 International]]. It contains demo data that can be used for interactive Org mode demo. If you are interested in a demo file of Org mode features, you can take a [[https://github.com/novoid/org-mode-workshop/blob/master/featureshow/org-mode-teaser.org][look at this file]] of an [[https://github.com/novoid/org-mode-workshop]].
+
+* Demo Preparation and Setup                                                               :noexport:
+
+Overwrite =org-agenda-files= so that only this file is used,
+preserving old variable content in temporary variable:
+
+#+BEGIN_SRC emacs-lisp :results none
+(setq PREVIOUS-org-agenda-files org-agenda-files)
+(setq my-demodir "src/Emacs Org mode demo data") ;; please do adapt to your path situation!
+(setq org-agenda-files  (concat (file-name-as-directory my-demodir) "Emacs Org mode demo data.org"))
+#+END_SRC
+
+* Demo Data
+:PROPERTIES:
+:VISIBILITY: children
+:END:
+
+** Paragraphs
+
+Pellentesque dapibus suscipit ligula. Donec posuere augue in quam. Etiam vel tortor sodales tellus ultricies commodo. Suspendisse potenti. Aenean in sem ac leo mollis blandit. Donec neque quam, dignissim in, mollis nec, sagittis eu, wisi. Phasellus lacus. Etiam laoreet quam sed arcu. Phasellus at dui in ligula mollis ultricies. Integer placerat tristique nisl. Praesent augue. Fusce commodo. Vestibulum convallis, lorem a tempus semper, dui dui euismod elit, vitae placerat urna tortor vitae lacus. Nullam libero mauris, consequat quis, varius et, dictum id, arcu. Mauris mollis tincidunt felis. Aliquam feugiat tellus ut neque. Nulla facilisis, risus a rhoncus fermentum, tellus tellus lacinia purus, et dictum nunc justo sit amet elit.
+
+Pellentesque dapibus suscipit ligula. Donec posuere augue in quam.
+Etiam vel tortor sodales tellus ultricies commodo. Suspendisse
+potenti. Aenean in sem ac leo mollis blandit. Donec neque quam,
+dignissim in, mollis nec, sagittis eu, wisi. Phasellus lacus. Etiam
+laoreet quam sed arcu. 
+
+Phasellus at dui in ligula mollis ultricies. Integer placerat
+tristique nisl. Praesent augue. Fusce commodo. Vestibulum convallis,
+lorem a tempus semper, dui dui euismod elit, vitae placerat urna
+tortor vitae lacus. 
+
+Nullam libero mauris, consequat quis, varius et, dictum id, arcu.
+Mauris mollis tincidunt felis. Aliquam feugiat tellus ut neque. Nulla
+facilisis, risus a rhoncus fermentum, tellus tellus lacinia purus, et
+dictum nunc justo sit amet elit.
+
+** List
+
+- Pellentesque
+  - dapibus suscipit ligula.
+- Donec posuere augue in quam.
+  - Etiam vel tortor sodales tellus ultricies commodo.
+  - Suspendisse potenti.
+  - Aenean in sem ac leo mollis blandit.
+  - Donec neque quam, dignissim in, mollis nec, sagittis eu, wisi.
+  - Phasellus lacus. Etiam laoreet quam sed arcu.
+  - Phasellus at dui in ligula mollis ultricies.
+- Integer placerat tristique nisl.
+  - Praesent augue.
+    - Fusce commodo.
+      - Vestibulum convallis, lorem a tempus semper, dui dui euismod elit, vitae placerat urna tortor vitae lacus.
+      - Nullam libero mauris, consequat quis, varius et, dictum id, arcu.
+      - Mauris mollis tincidunt felis.
+  - Aliquam feugiat tellus ut neque.
+- Nulla facilisis, risus a rhoncus fermentum, tellus tellus lacinia purus, et dictum nunc justo sit amet elit.
+
+** Projects
+
+Project definition according to [[https://karl-voit.at/2019/11/03/org-projects/][this article by Karl Voit]].
+
+
+*** NEXT [0/2] Example project: Garage Project (org-edna)                        :DemoProj:project:
+:PROPERTIES:
+:COLUMNS:  %40ITEM %6Effort(Effort){:} %60BLOCKER
+:COOKIE_DATA: todo recursive
+:END:
+
+- Why? The garage needs some new paint in order to raise my subjective mood. ;-)
+- This projects makes heavy use of org-edna which is explained in [[https://karl-voit.at/2020/08/14/project-mgt-draft/][this article]].
+
+**** NEXT Find local stores for paint
+SCHEDULED: <2021-03-14 Sun>
+:PROPERTIES:
+:Effort:   3h
+:TRIGGER:  if ids("DemoProj-Choose-color-for-paint") !done? then ids("DemoProj-Buy-paint") todo!(NEXT) scheduled!(".") endif
+:ID:       DemoProj-Find-local-stores-for-paint
+:END:
+
+**** NEXT Choose color for paint
+SCHEDULED: <2021-03-14 Sun>
+:PROPERTIES:
+:Effort:   3h
+:ID:       DemoProj-Choose-color-for-paint
+:TRIGGER:  if ids("DemoProj-Find-local-stores-for-paint") !done? then ids("DemoProj-Buy-paint") todo!(NEXT) scheduled!(".") endif
+:END:
+
+**** Buy paint
+:PROPERTIES:
+:Effort:   3h
+:ID:       DemoProj-Buy-paint
+:BLOCKER:  ids("DemoProj-Find-local-stores-for-paint" "DemoProj-Choose-color-for-paint")
+:TRIGGER:  ids("DemoProj-Move-car-to-nearby-parking-lot") todo!(NEXT) scheduled!(".") ids("DemoProj-Remove-bikes") todo!(NEXT) scheduled!(".") ids("DemoProj-Remove-stuff-from-shelves") todo!(NEXT) scheduled!(".")
+:END:
+
+"Buy paint" is only scheduled when both prior tasks are marked as DONE thanks
+to the "if ids(...) !done? then ids(...) ... endif" trick above.
+
+Until org-edna is going to support this, there is a viable workaround at:
+https://github.com/mskorzhinskiy/org-linked-tasks
+
+**** Move car to nearby parking lot
+:PROPERTIES:
+:Effort:   1h
+:ID:       DemoProj-Move-car-to-nearby-parking-lot
+:BLOCKER:  ids("DemoProj-Buy-paint")
+:TRIGGER:  ids("DemoProj-Garage-is-empty") todo!(DONE) scheduled!(".")
+:END:
+
+Please notice that as of 2020-08-14 and org edna version 1.0.2,
+headings without an active keywords can be marked as DONE despite the
+fact that they're blocked. I've reported this bug already and hope for
+a fix.
+
+**** Remove bikes
+:PROPERTIES:
+:Effort:   1h
+:ID:       DemoProj-Remove-bikes
+:BLOCKER:  ids("DemoProj-Buy-paint")
+:TRIGGER:  ids("DemoProj-Garage-is-empty") todo!(DONE)
+:END:
+
+**** Remove stuff from shelves
+:PROPERTIES:
+:Effort:   2d
+:ID:       DemoProj-Remove-stuff-from-shelves
+:BLOCKER:  ids("DemoProj-Buy-paint")
+:TRIGGER:  ids("DemoProj-Remove-shelves") todo!(NEXT) scheduled!("++1d")
+:END:
+
+**** Remove shelves
+:PROPERTIES:
+:Effort:   1d
+:ID:       DemoProj-Remove-shelves
+:BLOCKER:  ids("DemoProj-Remove-stuff-from-shelves")
+:TRIGGER:  ids("DemoProj-Garage-is-empty") todo!(DONE)
+:END:
+
+**** Garage is empty
+:PROPERTIES:
+:ID:       DemoProj-Garage-is-empty
+:BLOCKER:  ids("DemoProj-Move-car-to-nearby-parking-lot" "DemoProj-Remove-bikes" "DemoProj-Remove-shelves")
+:TRIGGER:  ids("DemoProj-Paint-walls-and-floor") todo!(NEXT) scheduled!("++1d")
+:END:
+
+**** Paint walls and floor
+:PROPERTIES:
+:Effort:   1d
+:ID:       DemoProj-Paint-walls-and-floor
+:BLOCKER:  ids("DemoProj-Garage-is-empty")
+:TRIGGER:  ids("DemoProj-Re-install-shelves") todo!(NEXT) scheduled!("++2d")
+:END:
+
+**** Re-install shelves
+:PROPERTIES:
+:Effort:   8h
+:ID:       DemoProj-Re-install-shelves
+:BLOCKER:  ids("DemoProj-Paint-walls-and-floor")
+:TRIGGER:  ids("DemoProj-Bring-back-bikes-into-garage") todo!(NEXT) scheduled!(".")  ids("DemoProj-Bring-back-car-into-garage") todo!(NEXT) scheduled!(".")
+:END:
+
+**** Bring back bikes into garage
+:PROPERTIES:
+:Effort:   1h
+:ID:       DemoProj-Bring-back-bikes-into-garage
+:BLOCKER:  ids("DemoProj-Re-install-shelves")
+:TRIGGER:  ids("DemoProj-Celebrate-and-close-project") todo!(NEXT) scheduled!(".")
+:END:
+
+**** Bring back car into garage
+:PROPERTIES:
+:Effort:   1h
+:ID:       DemoProj-Bring-back-car-into-garage
+:BLOCKER:  ids("DemoProj-Re-install-shelves")
+:TRIGGER:  ids("DemoProj-Celebrate-and-close-project") todo!(NEXT) scheduled!(".")
+:END:
+
+**** Celebrate and close project
+:PROPERTIES:
+:BLOCKER: consider(all) rest-of-siblings-wrap
+:ID:       DemoProj-Celebrate-and-close-project
+:END:	
+
+*** NEXT [0/1] Simple Project                                                             :project:
+:PROPERTIES:
+:COOKIE_DATA: todo recursive
+:ORDERED:  t
+:END:
+
+- Why? this is a demo project to demo the =ORDERED= property for
+  simple tasks: you can't mark the project as "DONE" as long as there
+  is a sibling marked with an unfinished todo keyword.
+
+**** NEXT Go shopping
+
+**** Prepare food
+
+**** Eat resulting dish
+
+**** Enjoy life with full stomach
+
+* Re-Establishing Things After the Demo                                                    :noexport:
+
+#+BEGIN_SRC emacs-lisp :results none
+(setq org-agenda-files PREVIOUS-org-agenda-files)
+#+END_SRC
