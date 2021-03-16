@@ -6,7 +6,15 @@
 #+OPTIONS: toc:nil author:nil timestamp:nil date:nil tags:nil
 #+STARTUP: indent
 
-This is a [[https://orgmode.org][Org mode]] file for demo purposes by [[https://Karl-Voit.at][Karl Voit]] licensed under [[http://creativecommons.org/licenses/by-sa/4.0/][Attribution-ShareAlike 4.0 International]]. It contains demo data that can be used for interactive Org mode demo. If you are interested in a demo file of Org mode features, you can take a [[https://github.com/novoid/org-mode-workshop/blob/master/featureshow/org-mode-teaser.org][look at this file]] of an [[https://github.com/novoid/org-mode-workshop]].
+This is a [[https://orgmode.org][Org mode]] file for demo purposes by [[https://Karl-Voit.at][Karl Voit]] licensed under
+[[http://creativecommons.org/licenses/by-sa/4.0/][Attribution-ShareAlike 4.0 International]]. It contains demo data that
+can be used for interactive Org mode demo. 
+
+Source of this file: https://github.com/novoid/org-mode-demodata
+
+If you are interested in a demo file of Org mode features, you can
+take a [[https://github.com/novoid/org-mode-workshop/blob/master/featureshow/org-mode-teaser.org][look at this file]] of the repository on
+[[https://github.com/novoid/org-mode-workshop]].
 
 * Demo Preparation and Setup                                                               :noexport:
 
@@ -18,6 +26,8 @@ preserving old variable content in temporary variable:
 (setq my-demodir "~/src/org-mode-demodata") ;; please do adapt to your path situation!
 (setq org-agenda-files (list (concat (file-name-as-directory my-demodir) "Emacs Org mode demo data.org")))
 #+END_SRC
+
+Reset things at the end of this file.
 
 * Demo Data
 :PROPERTIES:
