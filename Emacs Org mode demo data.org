@@ -1,6 +1,5 @@
 # -*- mode: org; coding: utf-8; -*-
-# Time-stamp: <2021-03-14 19:34:29 vk>
-# 2021-03-14=referenceday → see https://github.com/novoid/isodateshifter for a tool to shift all time-stamps to your demo day
+# 2021-03-16=referenceday → see https://github.com/novoid/isodateshifter for a tool to shift all time-stamps to your demo day
 #+TODO: TODO(t) NEXT(n) STARTED(s) WAITING(w@/!) SOMEDAY(S) | DONE(d!/!) CANCELED(c@/!)
 #+SETUPFILE: demo-tags.org
 #+AUTHOR: Karl Voit
@@ -16,8 +15,8 @@ preserving old variable content in temporary variable:
 
 #+BEGIN_SRC emacs-lisp :results none
 (setq PREVIOUS-org-agenda-files org-agenda-files)
-(setq my-demodir "src/Emacs Org mode demo data") ;; please do adapt to your path situation!
-(setq org-agenda-files  (concat (file-name-as-directory my-demodir) "Emacs Org mode demo data.org"))
+(setq my-demodir "~/src/org-mode-demodata") ;; please do adapt to your path situation!
+(setq org-agenda-files (list (concat (file-name-as-directory my-demodir) "Emacs Org mode demo data.org")))
 #+END_SRC
 
 * Demo Data
@@ -67,11 +66,11 @@ dictum nunc justo sit amet elit.
 
 ** Projects
 
-Project definition according to [[https://karl-voit.at/2019/11/03/org-projects/][this article by Karl Voit]].
-
+Project definition here is interpreted according to [[https://karl-voit.at/2019/11/03/org-projects/][this article by Karl Voit]].
 
 *** NEXT [0/2] Example project: Garage Project (org-edna)                        :DemoProj:project:
 :PROPERTIES:
+:CATEGORY: GarageProj
 :COLUMNS:  %40ITEM %6Effort(Effort){:} %60BLOCKER
 :COOKIE_DATA: todo recursive
 :END:
@@ -80,7 +79,7 @@ Project definition according to [[https://karl-voit.at/2019/11/03/org-projects/]
 - This projects makes heavy use of org-edna which is explained in [[https://karl-voit.at/2020/08/14/project-mgt-draft/][this article]].
 
 **** NEXT Find local stores for paint
-SCHEDULED: <2021-03-14 Sun>
+SCHEDULED: <2021-03-16 Sun>
 :PROPERTIES:
 :Effort:   3h
 :TRIGGER:  if ids("DemoProj-Choose-color-for-paint") !done? then ids("DemoProj-Buy-paint") todo!(NEXT) scheduled!(".") endif
@@ -88,7 +87,7 @@ SCHEDULED: <2021-03-14 Sun>
 :END:
 
 **** NEXT Choose color for paint
-SCHEDULED: <2021-03-14 Sun>
+SCHEDULED: <2021-03-16 Sun>
 :PROPERTIES:
 :Effort:   3h
 :ID:       DemoProj-Choose-color-for-paint
@@ -117,10 +116,9 @@ https://github.com/mskorzhinskiy/org-linked-tasks
 :TRIGGER:  ids("DemoProj-Garage-is-empty") todo!(DONE) scheduled!(".")
 :END:
 
-Please notice that as of 2020-08-14 and org edna version 1.0.2,
-headings without an active keywords can be marked as DONE despite the
-fact that they're blocked. I've reported this bug already and hope for
-a fix.
+Please notice that as of org edna version 1.0.2, headings without an
+active keywords can be marked as DONE despite the fact that they're
+blocked. I've reported this bug already and hope for a fix.
 
 **** Remove bikes
 :PROPERTIES:
@@ -193,6 +191,7 @@ a fix.
 
 *** NEXT [0/1] Simple Project                                                             :project:
 :PROPERTIES:
+:CATEGORY: SimpleProj
 :COOKIE_DATA: todo recursive
 :ORDERED:  t
 :END:
