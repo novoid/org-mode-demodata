@@ -5,12 +5,16 @@
 #+AUTHOR: Karl Voit
 #+OPTIONS: toc:nil author:nil timestamp:nil date:nil tags:nil
 #+STARTUP: indent
+#+CATEGORY: demo
 
 This is a [[https://orgmode.org][Org mode]] file for demo purposes by [[https://Karl-Voit.at][Karl Voit]] licensed under
 [[http://creativecommons.org/licenses/by-sa/4.0/][Attribution-ShareAlike 4.0 International]]. It contains demo data that
 can be used for interactive Org mode demo. 
 
 Source of this file: https://github.com/novoid/org-mode-demodata
+
+This file gets extended with more content according to demos I have to
+prepare.
 
 If you are interested in a demo file of Org mode features, you can
 take a [[https://github.com/novoid/org-mode-workshop/blob/master/featureshow/org-mode-teaser.org][look at this file]] of the repository on
@@ -103,6 +107,8 @@ SCHEDULED: <2021-03-16 Sun>
 :ID:       DemoProj-Choose-color-for-paint
 :TRIGGER:  if ids("DemoProj-Find-local-stores-for-paint") !done? then ids("DemoProj-Buy-paint") todo!(NEXT) scheduled!(".") endif
 :END:
+
+**** <2021-03-16 Tue 09:00-09:30> Scheduled call with paint store
 
 **** Buy paint
 :PROPERTIES:
@@ -217,6 +223,10 @@ blocked. I've reported this bug already and hope for a fix.
 **** Eat resulting dish
 
 **** Enjoy life with full stomach
+
+** Appointments
+
+*** <2021-03-16 Tue 11:45-12:30> Lunch with customer                                    :@customer:
 
 * Re-Establishing Things After the Demo                                                    :noexport:
 
