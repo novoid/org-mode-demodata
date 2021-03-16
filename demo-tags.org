@@ -1,0 +1,10 @@
+
+Tasks for myself or groups of people:
+#+TAGS: @myself(.) @team(t) @customer(c)
+
+Specific people:
+#+TAGS: @JohnDoe(j) @brother(b)
+
+I use it to filter my large agenda to the stuff that really matters:
+#+TAGS: focus(f)
+
