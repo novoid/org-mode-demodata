@@ -1,0 +1,32 @@
+* Org mode demo data
+
+This is a [[https://orgmode.org][Org mode]] file for demo purposes by [[https://Karl-Voit.at][Karl Voit]] licensed under
+[[http://creativecommons.org/licenses/by-sa/4.0/][Attribution-ShareAlike 4.0 International]]. It contains demo data that
+can be used for interactive Org mode demo. 
+
+Source of this repository: https://github.com/novoid/org-mode-demodata
+
+This gets extended with more content according to demos I have to
+prepare.
+
+If you are interested in a demo file of Org mode features, you can
+take a [[https://github.com/novoid/org-mode-workshop/blob/master/featureshow/org-mode-teaser.org][look at this file]] of the repository on
+[[https://github.com/novoid/org-mode-workshop]].
+
+* How to Thank Me
+
+I'm glad you like my tools. If you want to support me:
+
+- Send old-fashioned *postcard* per snailmail - I love personal feedback!
+  - see [[http://tinyurl.com/j6w8hyo][my address]]
+- Send feature wishes or improvements as an issue on GitHub
+- Create issues on GitHub for bugs
+- Contribute merge requests for bug fixes
+- Check out my other cool [[https://github.com/novoid][projects on GitHub]]
+
+* Local Variables                                                  :noexport:
+# Local Variables:
+# mode: auto-fill
+# mode: flyspell
+# eval: (ispell-change-dictionary "en_US")
+# End:
